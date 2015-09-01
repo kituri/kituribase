@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    
+    <!-- utils -->
+
+    <string name="network_error">网络异常</string>
+    <string name="not_more_data">没有新的数据</string>
+    <string name="repress_to_exit_app">再按一次退出应用</string>
+    <string name="app_update_dialog_btn_ok">现在更新</string>
+    <string name="app_update_dialog_btn_cancle">稍后再说</string>
+    <string name="app_unknown_error">发生未知错误</string>
+    <string name="fabu_note">发布照片</string>
+    <string name="bt_camera">拍照</string>
+    <string name="bt_album">相册</string>
+    <string name="bt_cancel">退出</string>
+    <string name="bt_quxiao">取消</string>
+    <string name="please_deleted_cache_dir">权限出错，无法读取存储空间</string>
+    <string name="timeout">网络有问题，连不上</string>
+    <string name="unknown_error_error_code">未知错误，错误代码</string>
+    <string name="sd_card_in_not_mounted">SD卡未挂载</string>
+    <string name="something_error">发生故障</string>
+    <string name="tip_is_copyed">已经复制到剪贴板</string>
+    <string name="success">完成</string>
+    <string name="publish_pic_more">最多只能选择5张图片</string>
+    <string name="album_photo_new">最新图片</string>
+    <string name="upload_image_success">上传图片成功</string>
+	<string name="upload_image_falid">上传图片失败</string>
+
+    <string name="picture_read_failed">图片解析失败</string>
+     <string name="copy_link_to_clipboard">复制链接</string>
+    <string name="wait_for_download_picture">等待图片下载……</string>
+
+    <!-- browser weibo -->
+    <string name="ori_picture">原图</string>
+    <string name="browser_part_picture">查看局部图片</string>
+    <string name="browser_picture">查看图片</string>
+    <string name="save_pic_album">保存到图片文件夹</string>
+    <string name="force_download">重新下载</string>
+    <string name="already_saved">已经保存过了</string>
+    <string name="cant_save_pic">发生错误，无法保存</string>
+    <string name="save_to_album_successfully">保存成功</string>
+    <string name="switch_to_middle_pic">中等图</string>
+    <string name="switch_to_ori_pic">原图</string>
+    <string name="cant_open_deleted_weibo">原微博已经被删除，看不懂中文吗？</string>
+    <string name="retry_download_pic">重新下载图片</string>
+    <string name="fetching_weibo_info">获取微博信息……</string>
+    <string name="comment_is_empty">没有评论</string>
+    <string name="repost_is_empty">没有转发</string>
+
+    <!-- button -->
+    <string name="close">关闭</string>
+    <string name="big_pic">原图</string>
+    <string name="share">分享</string>
+    <string name="share_to">分享到</string>
+    <string name="copy_to_clipboard">复制</string>
+    <string name="copy_successfully">复制完成</string>
+    <string name="have_copied">已经复制 %s</string>
+    <string name="open">打开</string>
+    <string name="switch_to_another_theme">切换主题</string>
+    <string name="tip_light_up_success">绑定成功</string>
+    <string name="tip_light_up_failure">绑定失败</string>
+    <string name="download_finished_but_cant_read_picture_file">下载完成，但是无法读取图片</string>
+    <string name="picture_is_too_large_to_read_so_gallery_load_thumbnails_of_this_picture">原图太大无法显示，载入缩略图</string>
+    <string name="picture_is_too_large_so_enable_software_layer">图片太大，启用软件渲染模式，滚动会掉帧……</string>
+    <string name="picture_cant_download_or_sd_cant_read">图片下载失败或是SD卡无法读取</string>
+
+    <string name="tip_pull_to_no_more_msg">没有更多数据</string>
+    
+    
+    <!--  share  -->
+    <string name="btn_share_weibo">新浪微博</string>
+    <string name="btn_share_weixin_friend">微信朋友圈</string>
+    <string name="btn_share_weixin">微信好友</string>
+    <string name="btn_dialog_preview_share_commit">提交</string>
+    <string name="tv_mimi_tips">且瘦且坚持,怒减 %s kg！</string>
+    <string name="tv_today_cut_down">炫一下，今天我减了</string>
+    <string name="tv_kg">kg</string>
+    
+    <!-- wechat -->
+    <string name="errcode_success">发送成功</string>
+    <string name="errcode_cancel">发送取消</string>
+    <string name="errcode_deny">发送被拒绝</string>
+    <string name="errcode_unknown">发送返回</string>
+    <string name="share_success">分享成功</string>
+    <string name="share_faile">分享失败</string>
+    <string name="weichat_version_low">未检测到微信或版本过低</string>
+    <string name="sina_version_low">未检测到新浪或版本过低</string>
+    <string name="input_reduce_weight_num">请输入今日减量...</string>
+    
+    <!-- Tab01 Chat-->
+     <string name="tab01_chat_title">%1$s (%2$d)</string>
+     
+     <!-- Time -->
+    <string name="time_before_month_ago">%1$d个月前</string>
+    <string name="time_before_week_ago">%1$d周前</string>
+    <string name="time_before_day_ago">%1$d天前</string>
+    <string name="time_before_hours_ago">%1$d小时前</string>
+    <string name="time_before_minute_ago">%1$d分钟前</string>
+    <string name="time_just">刚刚</string>
+    <string name="save_jietu_fail">截图保存失败</string>
+    
+</resources>
