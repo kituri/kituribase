@@ -1,16 +1,17 @@
 package com.kituri.app.ui;
 
+import com.kituri.app.KituriApplication;
+import com.kituri.app.push.PsPushUserData;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-
-import com.kituri.app.KituriApplication;
-import com.kituri.demo.Loft;
 
 public class BaseFragmentActivity extends FragmentActivity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
+		KituriApplication.getInstance().addActivity(this);
 	    //KituriApplication.getInstance().setActivity(this);
 	}
 	
@@ -26,7 +27,7 @@ public class BaseFragmentActivity extends FragmentActivity{
 	protected void onStart() {
 		// TODO Auto-generated method stub
 		//setReplyCallBack();
-//		if(!KituriApplication.getInstance().isAllActivityAlive() && !(this instanceof Loft)){
+//		if(!KituriApplication.getInstance().isAllActivityAlive() && !(this == KituriApplication.getInstance())){
 //			PsAuthenServiceL.GetPsSystemStartupRequest(mActivity, PsPushUserData.getPushUserIdChannelId(mActivity), null);
 //			PsPushUserData.setRestartCount(KituriApplication.getInstance(), 
 //					PsPushUserData.getRestartCount(KituriApplication.getInstance())+ 1);
@@ -44,7 +45,7 @@ public class BaseFragmentActivity extends FragmentActivity{
 	@Override
 	public void onResume() {
 		// TODO Auto-generated method stub
-//		KituriApplication.getInstance().addActivityStatus(this, true);
+		KituriApplication.getInstance().addActivityStatus(this, true);
 //		MobclickAgent.onResume(this);
 //		SharedPreference.getInstance(KituriApplication.getInstance()).recordTrace(SharedPreference.TRACE_ON_START,
 //				mActivity.getClass().getName());
@@ -54,7 +55,7 @@ public class BaseFragmentActivity extends FragmentActivity{
 	@Override
 	public void onStop(){
 		//dismissLoading();
-//		KituriApplication.getInstance().addActivityStatus(this, false);
+		KituriApplication.getInstance().addActivityStatus(this, false);
 //		if(!KituriApplication.getInstance().isAllActivityAlive() && (this instanceof Loft)){	 
 //		}
 		super.onStop();

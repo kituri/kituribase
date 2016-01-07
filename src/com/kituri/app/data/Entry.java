@@ -6,15 +6,16 @@ package com.kituri.app.data;
 import java.io.Serializable;
 
 import com.kituri.app.model.Intent;
-import com.kituri.app.model.Logger;
 import com.kituri.app.utils.Utility;
+
+import android.util.Log;
 
 
 /**
  * @author Kituri
  *
  */
-public class Entry implements Serializable, Viewable, Actionable, Selectionable, Indexable, EntryComparable{
+public class Entry implements Serializable, Viewable, Actionable, Selectionable, Indexable, EntryComparable, Cloneable{
 
 	private static final long serialVersionUID = -594713265002520688L;
 	
@@ -116,7 +117,7 @@ public class Entry implements Serializable, Viewable, Actionable, Selectionable,
 	}
 	
 	public void print(){
-		Logger.i(Utility.getClassPrint(this));
+		Log.i(getClass().getName(), Utility.getClassPrint(this));
 	}
 
 	@Override
@@ -137,7 +138,15 @@ public class Entry implements Serializable, Viewable, Actionable, Selectionable,
 		return 0;
 	}
 	
-
+	public Object clone(){ 
+		Entry o = null; 
+        try{ 
+            o = (Entry)super.clone(); 
+        }catch(CloneNotSupportedException e){ 
+            e.printStackTrace(); 
+        } 
+        return o; 
+    } 
 
 
 //	@Override

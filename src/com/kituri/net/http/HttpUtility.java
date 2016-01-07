@@ -18,9 +18,13 @@ public class HttpUtility {
         return httpUtility;
     }
 
-
+//Encoding
     public String executeNormalTask(HttpMethod httpMethod, String url, Map<String, String> param) throws KituriException {
-        return new JavaHttpUtility().executeNormalTask(httpMethod, url, param);
+        return executeNormalTask(httpMethod, url, param, "");
+    }
+    
+    public String executeNormalTask(HttpMethod httpMethod, String url, Map<String, String> param, String encoding) throws KituriException {
+        return new JavaHttpUtility().executeNormalTask(httpMethod, url, param, encoding);
     }
 
     public boolean executeDownloadTask(String url, String path, FileDownloaderHttpHelper.DownloadListener downloadListener) {

@@ -779,6 +779,38 @@ public class Utility {
 	// return convertCodeAndGetText(new String(bos.toByteArray()));
 	// }
 
+//	static public String convertCodeAndGetTextGb2312(InputStream is) {// 转码
+//		// File file = new File(str_filepath);
+//				BufferedReader reader;
+//				String text = "";
+//				try {
+//					// FileReader f_reader = new FileReader(file);
+//					// BufferedReader reader = new BufferedReader(f_reader);
+//					// FileInputStream fis = new FileInputStream(file);
+//					BufferedInputStream in = new BufferedInputStream(is);
+//					in.mark(4);
+//					byte[] first3bytes = new byte[3];
+//					in.read(first3bytes);// 找到文档的前三个字节并自动判断文档类型。
+//					in.reset();
+//					reader = new BufferedReader(new InputStreamReader(in, "gb2312"));
+//					String str = reader.readLine();
+//
+//					while (str != null) {
+//						text = text + str + "\n";
+//						str = reader.readLine();
+//
+//					}
+//					reader.close();
+//
+//				} catch (FileNotFoundException e) {
+//					// TODO Auto-generated catch block
+//					// e.printStackTrace();
+//				} catch (IOException e) {
+//					// e.printStackTrace();
+//				}
+//				return text;
+//	}
+	
 	static public String convertCodeAndGetText(InputStream is) {// 转码
 
 		// File file = new File(str_filepath);

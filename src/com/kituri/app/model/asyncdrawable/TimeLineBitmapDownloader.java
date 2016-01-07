@@ -94,7 +94,7 @@ public class TimeLineBitmapDownloader {
         if (TextUtils.isEmpty(key))
             return null;
         else
-            return KituriApplication.getInstance().getBitmapCache().get(key);
+            return (Bitmap) KituriApplication.getInstance().getBitmapCache().get(key);
     }
 
 

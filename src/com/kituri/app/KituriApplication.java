@@ -17,17 +17,15 @@ import android.support.v4.util.LruCache;
 import android.util.DisplayMetrics;
 import android.view.Display;
 
-import com.kituri.demo.Loft;
-
 /**
  * @author Kituri
  * 
  */
-public class KituriApplication extends Application {
+public class KituriApplication<T extends Activity> extends Application {
 	// 运用list来保存们每一个activity是关键
 	private List<Activity> mList = new LinkedList<Activity>();
 
-	private Loft mLoft;
+	private T mLoft;
 
 	private HashMap<String, Boolean> mapActivity = new HashMap<String, Boolean>();// 用于存储activity对应的激活状态
 
@@ -69,7 +67,12 @@ public class KituriApplication extends Application {
 
 	// add Activity
 	public void addActivity(Activity activity) {
-		if (!(activity instanceof Loft)) {
+		if (activity != mLoft) {
+			for (Activity act : mList) {
+				if(act == activity){
+					return;
+				}
+			}
 			mList.add(activity);
 		}
 	}
@@ -93,7 +96,9 @@ public class KituriApplication extends Application {
 		try {
 			for (Activity activity : mList) {
 				if (activity != null) {
-					activity.finish();
+					if(activity != mLoft){
+						activity.finish();
+					}
 				}
 			}
 		} catch (Exception e) {
@@ -112,11 +117,11 @@ public class KituriApplication extends Application {
 	}
 
 
-	public void setLoft(Loft loft) {
+	public void setLoft(T loft) {
 		this.mLoft = loft;
 	}
 
-	public Loft getLoft() {
+	public T getLoft() {
 		return mLoft;
 	}
 
@@ -134,7 +139,7 @@ public class KituriApplication extends Application {
 	 * @param isActivitied
 	 */
 	public void addActivityStatus(Activity activity, boolean isAlive) {
-		if (activity instanceof Loft) {
+		if (activity == mLoft) {
 			return;
 		}
 		if (mapActivity.containsKey(activity.getClass().getName())) {

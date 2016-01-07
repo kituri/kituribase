@@ -82,6 +82,24 @@ public class FileUtils {
 		}
 		return null;
 	}
+	
+	public static String readInStream(InputStream inStream) {
+		try {
+			ByteArrayOutputStream outStream = new ByteArrayOutputStream();
+			byte[] buffer = new byte[512];
+			int length = -1;
+			while ((length = inStream.read(buffer)) != -1) {
+				outStream.write(buffer, 0, length);
+			}
+
+			outStream.close();
+			inStream.close();
+			return outStream.toString();
+		} catch (IOException e) {
+			Log.e(TAG, "FileTest:" + e.getMessage());
+		}
+		return null;
+	}
 
 	public static File createFile(String folderPath, String fileName) {
 		File destDir = new File(folderPath);

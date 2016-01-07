@@ -16,6 +16,7 @@ import java.net.HttpURLConnection;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.zip.GZIPInputStream;
@@ -96,12 +97,12 @@ public class JavaHttpUtility {
     }
 
 
-    public String executeNormalTask(HttpMethod httpMethod, String url, Map<String, String> param) throws KituriException {
+    public String executeNormalTask(HttpMethod httpMethod, String url, Map<String, String> param, String encoding) throws KituriException {
         switch (httpMethod) {
             case Post:
-                return doPost(url, param);
+                return doPost(url, param, encoding);
             case Get:
-                return doGet(url, param);
+                return doGet(url, param, encoding);
         }
         return "";
     }
@@ -115,7 +116,7 @@ public class JavaHttpUtility {
             return null;
     }
 
-    public String doPost(String urlAddress, Map<String, String> param) throws KituriException {
+    public String doPost(String urlAddress, Map<String, String> param, String encoding) throws KituriException {
         KituriApplication globalContext = KituriApplication.getInstance();
         String errorStr = globalContext.getString(R.string.timeout);
         globalContext = null;
@@ -144,14 +145,14 @@ public class JavaHttpUtility {
             out.write(Utility.encodeUrl(param).getBytes());
             out.flush();
             out.close();
-            return handleResponse(uRLConnection);
+            return handleResponse(uRLConnection, encoding);
         } catch (IOException e) {
             e.printStackTrace();
             throw new KituriException(errorStr, e);
         }
     }
 
-    private String handleResponse(HttpURLConnection httpURLConnection) throws KituriException {
+    private String handleResponse(HttpURLConnection httpURLConnection, String encoding) throws KituriException {
     	KituriApplication globalContext = KituriApplication.getInstance();
         String errorStr = globalContext.getString(R.string.timeout);
         globalContext = null;
@@ -168,7 +169,7 @@ public class JavaHttpUtility {
             return handleError(httpURLConnection);
         }
 
-        return readResult(httpURLConnection);
+        return readResult(httpURLConnection, encoding);
     }
 
     private String handleError(HttpURLConnection urlConnection) throws KituriException {
@@ -202,7 +203,7 @@ public class JavaHttpUtility {
         return result;
     }
 
-    private String readResult(HttpURLConnection urlConnection) throws KituriException {
+    private String readResult(HttpURLConnection urlConnection, String encoding) throws KituriException {
         InputStream is = null;
         BufferedReader buffer = null;
         KituriApplication globalContext = KituriApplication.getInstance();
@@ -212,12 +213,16 @@ public class JavaHttpUtility {
             is = urlConnection.getInputStream();
 
             String content_encode = urlConnection.getContentEncoding();
-
+            
             if (null != content_encode && !"".equals(content_encode) && content_encode.equals("gzip")) {
                 is = new GZIPInputStream(is);
             }
-
-            buffer = new BufferedReader(new InputStreamReader(is));
+            if(TextUtils.isEmpty(encoding)){
+            	buffer = new BufferedReader(new InputStreamReader(is, Charset.defaultCharset()));
+            }else{
+            	buffer = new BufferedReader(new InputStreamReader(is, encoding));
+            }
+            
             StringBuilder strBuilder = new StringBuilder();
             String line;
             while ((line = buffer.readLine()) != null) {
@@ -276,7 +281,7 @@ public class JavaHttpUtility {
 
     }
 
-    public String doGet(String urlStr, Map<String, String> param) throws KituriException {
+    public String doGet(String urlStr, Map<String, String> param, String encoding) throws KituriException {
         KituriApplication globalContext = KituriApplication.getInstance();
         String errorStr = globalContext.getString(R.string.timeout);
         globalContext = null;
@@ -304,7 +309,7 @@ public class JavaHttpUtility {
 
             urlConnection.connect();
 
-            return handleResponse(urlConnection);
+            return handleResponse(urlConnection, encoding);
         } catch (IOException e) {
             e.printStackTrace();
             throw new KituriException(errorStr, e);
